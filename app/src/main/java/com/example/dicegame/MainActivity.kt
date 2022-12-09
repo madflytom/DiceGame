@@ -1,6 +1,7 @@
 package com.example.dicegame
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
  * This activity allows the user to roll a dice and view the result
  * on the screen.
  */
+private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +41,18 @@ class MainActivity : AppCompatActivity() {
 
         diceImage.setImageResource(drawableResource)
         diceImage.contentDescription = diceRoll.toString()
+        Log.i(TAG, "Dice Roll is ${diceRoll.toString()}")
 
     }
 }
+
+/**fun logging(){
+    Log.e(TAG, "ERROR: a serious error like an app crash")
+    Log.w(TAG, "WARN: warns about the potential for serious errors")
+    Log.i(TAG, "INFO: reporting technical information, such as an operation succeeding")
+    Log.d(TAG, "DEBUG: reporting technical information useful for debugging")
+    Log.v(TAG, "VERBOSE: more verbose than DEBUG logs")
+}**/
 
 class Dice(private val numSides: Int) {
     fun roll(): Int {
